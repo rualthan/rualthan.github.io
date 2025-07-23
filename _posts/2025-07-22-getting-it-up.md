@@ -16,7 +16,7 @@ The main purpose of blogging on Github Pages is to get git workflows into my mus
 
 I tried following the [Local Development](https://github.com/barryclark/jekyll-now?tab=readme-ov-file#local-development) instructions on the source repo. I got stuck trying to install github-pages "gem install github-pages". This was resolved by install the latest stable Ruby. My OS has 2.6 version whereas 2.7 or higher is required by github-pages. That too took some effort as I am new to Ruby, rbenv etc.  
 
-With Jekyll installed, I cloned by repository. I could see a local version at [http://127.0.0.1:4000/]( http://127.0.0.1:4000/) by running `jekyll serve` from the repo directory in terminal.
+With Jekyll installed, I locally cloned my repository. I could see a local version at [http://127.0.0.1:4000/]( http://127.0.0.1:4000/) by running `jekyll serve` from the repo directory in terminal.
 
 I created a post in Markdown at _posts/YYYY-MM-DD.md.
 
