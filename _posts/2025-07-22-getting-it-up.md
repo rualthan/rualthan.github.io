@@ -7,7 +7,7 @@ This is my second attempt at blogging with Github pages and Jekyll. It took more
 
 1. You need a Github account. I gave got one.
 2. I forked [jekyll-now](jekyll-now) to yourGithubusername.github.io
-3. In the forked repor, I updated _config.yml to trigger a build.
+3. In the forked repo, I updated _config.yml to trigger a build.
 4. I saw the build status under Deployments on the right side.
 5. Once the build is done, in your repo > Settings > Pages, you should see "Your site is live at https://yourGithubusername.github.io"
 6. Congrats! Your Github Page is live. 
