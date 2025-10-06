@@ -18,6 +18,6 @@ I tried following the [Local Development](https://github.com/barryclark/jekyll-n
 
 With Jekyll installed, I locally cloned my repository. I could see a local version at [http://127.0.0.1:4000/]( http://127.0.0.1:4000/) by running `jekyll serve` from the repo directory in terminal.
 
-I created a post in Markdown at _posts/YYYY-MM-DD.md.
+I created a post in Markdown at _posts/YYYY-MM-DD-title.md.
 
 After this, it's git add., git commit -m "add first post" and git push. Voila, my first post is live.
