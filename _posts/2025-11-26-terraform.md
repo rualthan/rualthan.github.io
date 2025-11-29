@@ -17,7 +17,7 @@ Developed by HashiCorp in 2014, Terraform is an Infrastructure as Code (IaC) too
 - [Input Variable](#input-variable)
 - [Output](#example)
 - [Sensitive data](#sensitive-data)
-- [Dependency](dependency)
+- [Dependency](#dependency)
 - [State file](#state-file)
 - [Backend](#backend)
 - [Module example](#module-example)
@@ -27,6 +27,7 @@ Developed by HashiCorp in 2014, Terraform is an Infrastructure as Code (IaC) too
 - [Logging](#logging)
 - [The nested block confusion](#the-nested-block-confusion)
 - [Terraform Cloud](#cloud)
+- [More](#more)
 - [Github repository](#github-repository)
 
 
@@ -629,6 +630,11 @@ You can try it out as it is free for up to 5 users. You can follow [this](https:
 1. Hereafter, plan and apply will run on HCP and the output will be streamed to your local machine.
 
 If you choose VCS workspace, you will combine it with a source control repository from the likes of GitHub and it can function like a CI/CD workflow. A merge on the repository will trigger a terraform apply on the workspace.
+
+## More
+- Provisioners
+- null_resource and terraform_data
+
 
 ## Github repository
 These ([repo](https://github.com/rualthan/Andrew-Brown-Terraform-Associate-Labs)) are the codes from the follow alongs of Andrew Brown's HashiCorp Terraform Associate (003) course.
