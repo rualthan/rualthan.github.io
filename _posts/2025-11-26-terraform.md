@@ -632,9 +632,25 @@ You can try it out as it is free for up to 5 users. You can follow [this](https:
 If you choose VCS workspace, you will combine it with a source control repository from the likes of GitHub and it can function like a CI/CD workflow. A merge on the repository will trigger a terraform apply on the workspace.
 
 ## More
-- Provisioners
-- null_resource and terraform_data
+### Provisioners
+Provisioners let you perform operations after terraform apply. Terraform providers the following provisioners:
 
+- file: Copies files from the host where Terraform is running to the new resource.
+- local-exec: Runs command on the local machine after Terraform creates the resource.
+- remote-exec: Runs on the remote resource after Terraform creates the resource.
+- Cloud-init(user_data): Pass data or run commands on first boot in the compute instance created by Terraform 
+
+Provisioner should be added inside the resource block.
+Terraform cannot manage the outcome of the tasks done by provisioners. Therefore, it is recommended to avoid it as much as possible. When possible, it should be built into the image itself.
+
+More on provisioners [here](https://developer.hashicorp.com/terraform/language/provisioners#perform-post-apply-operations).
+
+### null_resource and terraform_data
+You need to perform post apply operation. You can use provisioner because the task has no relation to the resources and provisioner cannot be called outside of a resource block. The solution to this is to use a null_resource and place the provisioner inside it.
+
+A null resource is a fake resource in the sense that it is like a resource but it doesn't create any object anywhere. A resource belongs to a provider and guess which provider provides a null resource? [Null provider](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource). Here is a Spacelift [article](https://spacelift.io/blog/terraform-null-resource) on null_resource.
+
+Terraform 1.4 adds [terraform_data](https://registry.terraform.io/providers/hashicorp/null/latest/docs/guides/terraform-migration) to replace null_resource. 
 
 ## Github repository
 These ([repo](https://github.com/rualthan/Andrew-Brown-Terraform-Associate-Labs)) are the codes from the follow alongs of Andrew Brown's HashiCorp Terraform Associate (003) course.
