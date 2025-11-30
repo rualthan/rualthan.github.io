@@ -15,18 +15,17 @@ Developed by HashiCorp in 2014, Terraform is an Infrastructure as Code (IaC) too
 - [Example](#example)
 - [Providers](#providers)
 - [Input Variable](#input-variable)
-- [Output](#example)
+- [Output](#output)
 - [Sensitive data](#sensitive-data)
 - [Dependency](#dependency)
 - [State file](#state-file)
 - [Backend](#backend)
 - [Module example](#module-example)
 - [Meta arguments](#meta-arguments)
-- [Complex types](#complex-types)
-- [Built-in functions](#built-functions)
+- [Built-in functions](#built-in-functions)
 - [Logging](#logging)
 - [The nested block confusion](#the-nested-block-confusion)
-- [Terraform Cloud](#cloud)
+- [Terraform Cloud](#terraform-cloud)
 - [More](#more)
 - [Github repository](#github-repository)
 
@@ -36,7 +35,7 @@ Developed by HashiCorp in 2014, Terraform is an Infrastructure as Code (IaC) too
    - Origin: Terraform is an Infrastructure as Code (IaC) tool created by HashiCorp in 2014.
    - Acquisition: 
       - HashiCorp was acquired by IBM; the deal officially closed in October 2024. 
-      - HashiCorp officially joined IBM in Feb, 2025 after regulatory approvals.
+      - HashiCorp officially joined IBM in Feb, 2025 after regulatory approvals in US and EU.
    - Licensing Shift: Originally strictly Open Source (Mozilla Public License v2.0), HashiCorp switched Terraform to the Business Source License (BSL) in August 2023.
      - Note: Consequently, it is no longer compliant with the OSI "Open Source" definition, though the source code remains viewable.
 
@@ -86,7 +85,7 @@ Developed by HashiCorp in 2014, Terraform is an Infrastructure as Code (IaC) too
 
         - Reusable Modules: Packages of Terraform code meant to be called by other configurations.
 
-        - Can be sourced from local paths, Git, or the public Terraform Registry.
+        - Can be sourced from local paths, Git, private registry or the public Terraform Registry.
 
     - Key Configuration Blocks:
 
@@ -116,7 +115,7 @@ Developed by HashiCorp in 2014, Terraform is an Infrastructure as Code (IaC) too
 
         - terraform plan: Creates a dry-run execution plan.
 
-        terraform apply: Executes the changes.
+        - terraform apply: Executes the changes.
 
     - The State File (terraform.tfstate):
 
@@ -155,7 +154,7 @@ Developed by HashiCorp in 2014, Terraform is an Infrastructure as Code (IaC) too
     - Wrappers: Tools built on top of Terraform include Terragrunt, Spacelift, Env0, and Scalr.  
 
 ## Study guides
-- [Course by Andrew Brown](#Course-by-andrew-brown)
+- [Course by Andrew Brown](#course-by-andrew-brown)
 - [Book by Yevgeniy Brikman](#book-by-yevgeniy-brikman)
 - [Exam Prep](#exam-prep)
 - [Etc](#etc)
@@ -181,11 +180,11 @@ The book _Terraform: Up and Running: Writing Infrastructure as Code_:
 
       - I really like how he introduced and explained workspace and state file isolation in chapter 3.
 
-      - The code are availables on this [report](https://github.com/brikis98/terraform-up-and-running-code) 
+      - The code example are available on this [report](https://github.com/brikis98/terraform-up-and-running-code) 
 
-      - Excellent explanation of meta-arguments/meta-arguments. I love it how he shows how it might be done in a programming language using a pseudo code which looks very close to most language. If I need a refresher (which I will) on count, for_each etc., I will get back to chapter.
+      - Excellent explanation of meta-arguments. I love it how he shows how it might be done in a programming language using a pseudo code which looks very close to many languages. If I need a refresher (which I will) on count, for_each etc., I will get back to chapter.
 
-      - Good coverage on Secret Management. I have been storing AWS credentials in plain text file because it's just my practice. After reading this chapter, i immediately adopted aws-vault to store the secrets
+      - Good coverage on Secret Management. I have been storing AWS credentials in plain text file because it's just my practice. After reading this chapter, i immediately adopted aws-vault to store the secrets.
 
     
             brew install --cask aws-vault
@@ -198,9 +197,8 @@ The book _Terraform: Up and Running: Writing Infrastructure as Code_:
   - He provides a crash course on Docker and Kubernetes
   - There's section on using Kubernetes provider
   - A guide on how to convince your boss and team to adopt IaC
-  - A good description of software deployment.
-
-  - Lastly but not he least, the reading list at the end of the book is great cache of resources. I visited his blog and from there I found he has published a new book called [Fundamentals of DevOps and Software Delivery](https://www.fundamentals-of-devops.com/) which is really tempting to read. It's pretty costly in INR but you can get a trial access at O'reilly. 
+  - A good description of software deployment
+  - Lastly but not he least, the reading list at the end of the book is a wealth of resources. I visited his blog and from there I found his latest book [Fundamentals of DevOps and Software Delivery](https://www.fundamentals-of-devops.com/) which is really tempting to read. It's pretty costly in INR but you can get a trial access at [O'reilly](https://www.oreilly.com). Oh, really? 
 
   - I am a Y Brikman fan.
 
@@ -210,7 +208,7 @@ The book _Terraform: Up and Running: Writing Infrastructure as Code_:
    - Bryan’s practice test on Udemy. As the reviews say, this is indeed pretty close to the exam. 
    - I love the flashcards generated by Google NoteBookLM using sources mentioned plus the official exam list. 
    - Practice helps. Andrew's follow alongs are pretty good.
-   - Familiarize yourself with HCP cloud options by inspecting the settings at the Org and Workspace level.
+   - Familiarize yourself with HCP Terraform, find the options by inspecting the settings at the Org and Workspace level.
 
 ### Etc
   - Spacelift and Env0 provides good articles on Terraform. If you find these sources in your search result, go for them.   
@@ -229,7 +227,7 @@ They are retiring Exam 003 and launching Exam 004 in January, 2026.
 1. To install terraform, follow the instruction for your OS from [here](https://developer.hashicorp.com/terraform/install)
 2. If correctly installed, `terraform version` should return the version of the installed core.
 3. To enable the CLI auto-completion using tab, run `terraform -install-autocomplete`. This is a useful tip that most of the tutorials do not include. 
-4. VS code and HashiCorp Plugin
+4. If you use VS code, install the [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform) extension.
 
 ## General workflow
 
@@ -238,6 +236,7 @@ They are retiring Exam 003 and launching Exam 004 in January, 2026.
 3. write (main.tf)
 4. `terraform init`  
 5. `terraform apply`
+6. `terraform destroy`
 
 This is the bare minimum. In reality, after writing and `terraform init`, you are likely to run 
 
@@ -249,7 +248,7 @@ Tips
 1. `terraform apply -auto-approve` to skip the prompt for confirmation
 1. `terraform apply -destroy` is another way to run `terraform destroy`.
 1. `terraform -fmt -recursive` to format the code in the sub directories as well. 
-1. Install [TFlint](https://github.com/terraform-linters/tflint) which goes beyond `terraform validate`.
+1. Install [TFlint](https://github.com/terraform-linters/tflint) linter which goes beyond `terraform validate`.
 
 
 ## Terraform terms
@@ -257,17 +256,16 @@ Tips
 1. Providers are plugins 
 1. The root of the working directory is the root module
 1. If you have codes in a sub-directory under the working directory, they are modules or child modules
-1. Arguments are the values we assigned to parameters. They are an input to the provider based on which they will be created. Example, to create an AWS instance, we have to assign the AMI ID we want to use to the ami parameter in the resource block.
+1. Arguments are the values we assigned to parameters. They are an input to the provider (resources) based on which they will be created. Example, to create an AWS instance, we have to assign the AMI ID we want to use to the ami parameter in the resource block.
 1. Attributes are the properties of infrastructure objects. Example, the ID of an AWS instance.  
-1. Current Working directory: This is the directory that has the Terraform files
 1. Terraform is the software, the product and terraform is the CLI. Simple, I know.
-1. The terraform cli, if you use just that, you are using what they also call the community edition. 
-1. HCP: Hashicorp Cloud Platform formerly known as Terraform Cloud. 
+1. The terraform cli, if you use just that, you are using what they call the community edition. 
+1. HCP Terraform: Hashicorp Cloud Platform formerly known as Terraform Cloud. 
 1. HCL: Hashicorp Configuration Language
 
 ## Best Practices
 1. Terraform will process any file with .tf extension in the working directory. It is not mandatory to code your configuration in a file called main.tf but this is generally followed as the entry point.
-1. You can keep the entire code in a single file. It will work but it will very hard to read and managed. 
+1. You can keep the entire code in a single file. It will work but it will very hard to read and manage. 
 1. It is generally broken up into different files. This is the [recommend way](https://developer.hashicorp.com/terraform/language/style#file-names) to spit it.
     - backend.tf for your backend configuration
     - main.tf for all resource and data source blocks
@@ -277,7 +275,7 @@ Tips
     - variables.tf for variable declaration 
     - locals.tf to define the local values
     - override.tf for override definitions 
-1. The file should be at the same directory level. If they are in a different directory, it will belong to a different or child module. 
+1. The files should be at the same directory level. Otherwise it becomes a apart of a different module. 
 1. Provisioners should be used only as a last resort.
 1. Since Terraform and the providers are constantly updated, it is recommended to add version constraint for both. 
 
@@ -287,12 +285,12 @@ Enough said. Let us get to work and see what it is like to use Terraform to crea
 We will deploy an EC2 instance. We will need to have an IAM user with the right permissions and the credentials configured on our machine. The simplest was is to follow the setup you would do for aws cli but you don't have to install aws cli. Assuming we got the set up, lets proceed.
 
 1. Create a new directory called example. Inside the directory, create a file called main.tf.
-1. Since we want to deploy an EC2 instance, we need the provider for AWS.
+1. Since we want to deploy an EC2 instance, we need the provider aws.
 1. Go to Terraform Registry and lookup aws provider. Once you find it, click on the "use provider" which will give a sample code to get started. Paste that into your main.tf.
 1. The terraform block is filled but the provider isn't. How does one know what goes into this block. No one knows by heart. We look at the examples, we look at the documentation.
-1. From memory, I know that we need to region argument in the provider block. I will add `region = "us-east-1"`. You can also see this in the documentation section. 
+1. From memory, I know that we need to a region argument in the provider block. I will add `region = "us-east-1"`. You can also see this in the documentation section of [aws provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs). 
 1. EC2 instance is a resource. So I will need a resource block. The resource we need is called aws_instance, search it within the aws provider in the registry. I will create a resource block and add just the ami and instance_type arguments. 
-1. So far, this is my code. The minimum required to deploy an EC2 instance.
+1. So far, this is our code. The minimum required to deploy an EC2 instance. As a matter of fact, this is the minimum sensible version. It will work with just the resource block. The instance will be created with default everything else, region(us-east-1, default vpc etc.)
     ```
     terraform {
       required_providers {
@@ -313,40 +311,45 @@ We will deploy an EC2 instance. We will need to have an IAM user with the right 
       instance_type = "t2.micro"
     }
     ```    
-1. Run `terraform init`. This initializes my backend (later on t his) and downloads the provider our code references which is aws. The provider is saved in .terraform directory. There will be a new file terraform.lock.hcl which locks the version used during init. Inspect your current working directory with `ls, ls -la, tree, tree -a`. For a thorough look into the init process, read this [document](https://developer.hashicorp.com/terraform/tutorials/cli/init?utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS).
-1. I can actually jump to plan or apply but lets run `terraform validate` to validate and `terraform fmt` to format. The other doesn't matter. Some may prefer to format at a later stage.
+1. Run `terraform init`. 
+    - This initializes the backend (later on this) and downloads the provider that our code references which is aws. 
+    - The provider is saved in the .terraform directory. 
+    - There will be a new file terraform.lock.hcl which locks the version used during init. 
+    - Inspect your current working directory with `ls, ls -la, tree, tree -a`. 
+    - For a thorough look into the init process, read [this](https://developer.hashicorp.com/terraform/tutorials/cli/init?utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS).
+1. I can actually jump to plan or apply but lets run `terraform validate` to validate and `terraform fmt` to format. The order doesn't matter. Some may prefer to format at a later stage.
 1. The `terraform fmt` will align the equal sign in the resource block because they weren't, among other things.
-1. `terraform plan` to preview what the code will if applied.
+1. `terraform plan` to preview what the code will do if applied.
 1. Finally, `terraform apply` to deploy the instance
 1. The plan and apply output will show  "+, - and ~". Find out what those mean.
 1. After apply, notice the `terraform.tfstate` file in the directory. It's a record of the resource created by the code. It maps the resource name to their identifies in AWS. It also has the attributes that comes with it such as IP addresses etc. More on state file later. 
-1. Run `terraform state list` to see the resources that were created.
+1. Run `terraform state list` to see the resources created.
 1. At this point, even if you apply again, nothing will happen because Terraform is idempotent. 
 
 
 How can we improve this code?
-1. The ami value is hardcoded. We can use an input variable to make our code modular. Define the variable using variable block and assign the ami argument as `ami = var.var_name` in the resource block. 
-1. The other way is to use the data block to query AWS for ami's and filter it our need using the filter block  
-1. We do not mention which VPC and security group will be applied. The default ones are used if we don't mention it. We can also fetch existing VPCs anf SGs with the data block
+1. The ami value is hardcoded. We can use an input variable to make our code modular. Define the variable using the variable block and assign the ami argument as `ami = var.var_name` in the resource block. 
+1. The other way is to use the data block to query AWS for ami's and filter it to our need using the filter block.  
+1. We do not mention which VPC and security group will be applied. The default ones are used if we don't mention it. We can fetch existing VPCs and SGs with the data block.
 1. We won't be able to SSH to the instance without key pairs. The aws_instance resource has an argument called key_name. You can assign it to the name of the key pair you have in AWS: `key_name = "name of key pair"`. If you prefer to use your existing keys on your machine, create a key pair with the aws_key_pair resource and assign the name to the key_name argument.
-1. To configure the instance on first boot, may be run some commands, install some package, the aws_instance resource has an argument called user_data. It can take a file as an input or you can provide the commands inline with Terraform here document. 
+1. To configure the instance on first boot, may be run some commands, install some package, the aws_instance resource has an argument called user_data. It becomes the input to cloud init. It can take a file as an input or you can provide the commands inline with the here document. 
 
 Finally, remember to destroy by running `terraform destroy` and I have a habit of running `terraform state list` right after destroy for a peace of mind.
 
 ## Providers
 1. Terraform relies on plugins called "providers" to interact with cloud providers, SaaS providers, and other APIs.
-1. Each provider adds a set of resource types and/or data sources that Terraform can manage
-2. Providers are distributed separately from Terraform itself, and each provider has its own release cadence and version numbers
+1. Each provider adds a set of resource types and data sources that Terraform can manage.
+2. Providers are distributed separately from Terraform itself, and each provider has its own release cadence and version numbers.
 2. They are downloaded by terraform init on need basis. 
-3. Even if they are mentioned, init will download a provider if the code references a resource that belongs to it.
-4. We can define tme same provider multiple times in a configuration.
-5. But we need "alias" within the provider block to uniquely refer to them. Example, We can have AWS providers for different regions in the same configuration.
-7. To use that provider, inside a resource block, use provider argument. Example: `providers = {aws = aws.alias_name}`
-8. alias for provider can also be defined in the terraform block 
+3. Even if they are not added in the code, init will download a provider if the code references a resource that belongs to it.
+4. We can define the same provider multiple times in a configuration.
+5. But we need "alias" within the provider block to uniquely refer to them. Example: We can have AWS providers for different regions in the same configuration.
+7. To use that provider, inside a resource block, use provider argument. Example: `provider = aws.alias_name`
+8. Alias for provider can also be defined in the terraform block. 
 9. Providers are frequently updated. To lock the version of the provider, use provider version constraint in terraform block.
 10. In the absence of version constraint in the code, init will download the latest version.
-13. `terraform providers` give you a list of providers used by the configuration.
-14. The provider downloaded is saved in .terraform directory. also a .terraform.lock.hcl file is created with the exact provider version used. 
+13. `terraform providers` give you a list of providers used by the configuration
+14. The provider downloaded is saved in .terraform directory. The terraform.lock.hcl file is created with the exact provider version used. 
 
 
 ## Input Variable
@@ -354,7 +357,7 @@ This is how we avoid hard coding argument assignment in Terraform. Input variabl
 
 - [Data types](#data-types)
 - [variable block](#variable-block)
-- [variable reference](variable-reference)
+- [variable reference](#variable-reference)
 - [Interpolation](#interpolation)
 - [Assigning value](#assigning-value)
 - [Precedence](#precedence)
@@ -392,6 +395,11 @@ This is how you define a variable. It can be main.tf but it is recommended to de
    
 To refer variable this variable, we use `var.example`. 
 
+### Variable reference
+Variables are referenced in the form var.variable_name.
+
+    something = var.something_else
+
 ### Interpolation
 To mix variable reference with strings, we use "${...}". For example:
 
@@ -410,7 +418,7 @@ To mix variable reference with strings, we use "${...}". For example:
 1. If no value is provided, you will be prompted to enter it during apply.
 
 ### Precedence
-If we assign value to variables by more than one way, which one will be taken? This is the order precedence from lowest to highest.
+If we assign value to variables by more than one way, which one will be effective? This is the order of precedence from lowest to highest.
 
 1. default (lowest)
 2. env (TF_VAR_something)
@@ -422,7 +430,7 @@ If we assign value to variables by more than one way, which one will be taken? T
 ### Locals
 Locals are like variables but meant to be used only within a module. Recall what is a module? 
 
-Say you are going to assign the port 80 multiple times, you can use locals to avoid repetition. It's not hard to type 80, may be even easier but if you have to change it, it would be nice to do it only once. 
+Say you are going to assign the port 80 multiple times, you can use locals to avoid repetition. It's not hard to type 80, may be even easier but if you have to change it, it wouldn't be fun to change it in 10 places. 
 
 To declare a local, note "locals":
 
@@ -435,16 +443,16 @@ To reference a local, note "local":
     something = local.port
 
 ## Output
-The output block is a way to expose data. For instance, when we deploy the EC2 instance, we can output the public IP for us to connect to it rather than looking up from AWS console or the state file.
+The output block is a way to expose data. For instance, when we deploy the EC2 instance, we can output the public IP for us to connect to it rather than looking up from the AWS console or the state file.
 
-To extend our example code for deploy EC2 instance, to output the public IP:
+To extend our example code to deploy EC2 instance, to output the public IP:
 
     output "public_ip"{
         description = "Public IP of the instance. Having a description is best practice."
         value = aws_instance.example.public_ip
     }
 
-You can see the output when your run apply. You can also use:
+We can see the output when we run apply. We can also use:
 1. `terraform output`
 1. `terraform output public_ip`
 1. `terraform output -json`
@@ -455,44 +463,44 @@ The raw output is useful when you want to insert it in a bash command or script.
 Output is also a way to pass data from a child module to the calling module. Otherwise, variables are available only within a module. We will cover this in the module section.    
 
 ## Sensitive data
-To protect sensitive data, we can use the sensitive argument in variable and output block. Add `sensitive = true`. This is redact the value in plan and apply but it will still be stored as plain text in the state file.
+To protect sensitive data, we can use the sensitive argument in variable and output block. Add `sensitive = true`. This will redact the value in plan and apply but it will still be stored as plain text in the state file.
 
 If we output a variable marked sensitive, it must also be made sensitive in the output block.
 
 There is also a built-in function called sensitive.
 
 ## Dependency
-By default, Terraform creates as much as 10 resources in parallel. This can be controlled by the flag parall. Sometimes, a resource will require the existence of a difference resource before it can be created. Terraform analyses the code and build a dependency graph. It will create the resources in the order required. 
+By default, Terraform creates as much as 10 resources in parallel. This can be controlled by the flag `-parallelism=n`. Sometimes, a resource will require the existence of a another resource before it can be created. Terraform analyses the code and build a dependency graph. It will create the resources in the order required. 
 
 ### Implicit dependency 
-When a resource refers the attribute a another resource, it creates an implicit dependency. If you create a security group and an instance resource block in the same configuration uses it, Terraform knows that it should create the security group before the instance.   
+When a resource refers the attribute of a another resource, it creates an implicit dependency. If you create a security group and an instance resource block in the same configuration uses it, Terraform knows that it should create the security group before the instance.   
 
 ### Explicit dependency
-In the absence of an implicit dependency but when a resource have a dependency on something else, an explicit dependency can be created using the depends_on block inside the resource block that is dependent on something else.  
+In the absence of an implicit dependency but when a resource have a dependency on something else, an explicit dependency can be created using the `depends_on` block inside the resource block that is dependent on something else.  
 
 To view the dependency, run `terraform graph`. 
 
 ## State file
-1. If Terraform is an empire, the state file would be the target of the enemies. It is the heart of your Terraform instance.
-1. It is the snapshot of yor infrastructure managed by Terraform
-1. It is how Terraform knows what already exists and avoid recreating them on subsequent applies.
-1. It is refreshed by every run of plan and apply
+1. If Terraform is an empire, the state file would be the first target by the enemies. It is the heart of your Terraform instance.
+1. It is the record of yor infrastructure managed by Terraform.
+1. It is how Terraform knows what exists and avoid recreating them on subsequent applies.
+1. It is refreshed by every run of plan and apply.
 1. `terraform apply -refresh-only` when you don't to refresh the state without creating resources. 
-1. Resources created outside of Terraform can be brought under Terraform managed by a combination of adding a block for it and running `terraform import ...` command. 
-1. It always in plain text which means even variables marked as sensitive will not be masked in state file. This is Enterprises will use a backend that can safely store the state file by using encryption or other means. 
+1. Resources created outside of Terraform can be brought under Terraform management by a combination of adding a block for it and running `terraform import ...` command. 
+1. It is always in plain text which means even variables marked as sensitive will not be masked in the state file. This is why Enterprises will use a backend that can safely store the state file by using encryption or other means. 
 
 ## Backend
 Backend is where the state file resides. Apart from storing the state file, some backend provides a run time. 
 
 When we use the community edition, we use the terraform core installed in our local machine. The state file is also stored locally. This is local backend. The default backend when you don't specify the backend in your code.
 
-Another function of the backend is state locking which is a feature that prevents concurrently execution of the same configuration. When you collaborate with team, you must use a backend that supports state locking.
+Another function of the backend is state locking which is a feature that prevents concurrent execution of the same configuration. When you collaborate with a team, you must use a backend that supports state locking.
 
 There are several supported backend types, some support one or all of:  storing state file, run time, locking. Refer to this [list](https://developer.hashicorp.com/terraform/language/backend).
 
 To change the backend, we use the backend block nested in the terraform block. To use HCP Terraform (TF Cloud), though the backend block supports it, there is a dedicated block called cloud.
 
-When you have a single workspace, the state file is terraform.tfstate in the directory of the root module. If there are multiple workspaces, it will be stored as:
+When you have a single workspace, the state file is saved terraform.tfstate. If there are multiple workspaces, in case of local backend, it will be stored as:
 
 ```
   terraform.tfstate.d/
@@ -501,13 +509,12 @@ When you have a single workspace, the state file is terraform.tfstate in the dir
     └── production/
         └── terraform.tfstate
 ```
+Other backend may do it differently to isolate the state file.  
 
-This is how the local backend does it. Other backend may do it differently. 
-
-Take care of your back(end).
+Take good care of your back(end).
 
 ## Module example
-A module is (usually) someone else's Terraform code that you call from yours. You can find them on Terraform registry. AWS VPC module is a good example to check. 
+A module is (usually) someone else's Terraform code that you call from yours. It lets you reuse your code or others' code. You can find them on Terraform registry. AWS VPC module is a good example to check. 
 
 Lets convert our example of EC2 creation into a module.
 
@@ -516,24 +523,24 @@ Lets convert our example of EC2 creation into a module.
 3. mv main.tf terraform-aws-ec2-example
 4. vi main.tf
 
-We moved the main.tf where we coded into the new directory. Hence, forth terraform-aws-ec2-example is our child module. The directory looks like:
+ Hence, forth terraform-aws-ec2-example is our child module. The directory looks like:
 
-  $ tree -rl example 
-    example
-    ├── terraform-aws-ec2-example
-    │   └── main.tf
-    └── main.tf
+    $ tree -rl example 
+        example
+        ├── terraform-aws-ec2-example
+        │   └── main.tf
+        └── main.tf
 
-Since variablize is not a widely accepted word, lets convert the ami ID in the child module to a variable.
+Since variablize is not a widely accepted word, lets say we will convert the ami ID in the child module to a variable.
 
-Create a variable block as below:
+Create a variable block:
 
     variable "ami_id" {
       description = "To input the AMI ID"
       type        = string
     }
 
-In the source block, the ami ID is currently hardcoded. Lets change the hardcode value to a variable.
+In the source block, the ami ID is currently hardcoded. Change it to:
 
       ami           = var.ami_id
 
@@ -577,9 +584,9 @@ main.tf in the root module:
     ami_id = "ami-0fa3fe0fa7920f68e"
     }
 
-ex2_example is just a label or name of the module block. The module we are actually calling the one pointed by the source argument.
+ex2_example is the local name of terraform-aws-ec2-example module in our root module, the module we call, the one pointed by the source argument.
 
-At this point, we can run init, plan and apply. How what about the output in the child module? Merely calling the module with it's required argument will output any value. We have to call it from calling module. Adding this to our root module code:
+At this point, we can run init, plan and apply. How what about the output in the child module? Merely calling the module with it's required argument will not output any value. We have to call it from calling module. Adding this to our root module code:
 
     output "public_ip" {
     description = "This is the public IP of the instance"
@@ -595,7 +602,7 @@ There are requirements to public a module. One of them is the naming format. Tha
 This is a module ([apache-example2](https://registry.terraform.io/modules/rualthan/apache-example2/aws/latest)) which I published on the registry. Please use it
 
 ## Meta arguments
-Meta-arguments are special class of arguments that are available across different resource types. We have mentioned depends_on for explicit dependency and provider arguments to refer to a specific provider when multi instances of the same provider exist in a configuration. These are meta-arguments.
+Meta-arguments are special class of arguments that are available across different resource types. We have mentioned `depends_on` for explicit dependency and `provider` arguments to refer to a specific provider using the alias. These are meta-arguments.
 
 Others are count, for_each, lifecycle etc. Look them up on the [documentation](https://developer.hashicorp.com/terraform/language/meta-arguments) with special attention to lifecycle.
 
@@ -604,7 +611,7 @@ Terraform provides a lot of functions to transform and combine values.
 
 For a list of built-in functions, go [here](https://developer.hashicorp.com/terraform/language/functions) and look at the left pane. 
 
-There are functions string, numeric, filesystem and my more. 
+There are functions for string, numeric, filesystem and more. 
 
 A good way to test the functions is using the terraform console.
 
@@ -618,8 +625,10 @@ A good way to test the functions is using the terraform console.
     > basename(path.cwd)
     "example"
 ```
+
 ## Logging
-- Terraform logging can be enabled using the TF_LOG env. While applying, set TF_LOG="log level". 
+- Terraform logging can be enabled using the TF_LOG env. 
+- To set: `export TF_LOG="log level"`
 - The levels in decreasing order of verbosity are: TRACE, DEBUG, INFO, WARN or ERROR.
 - TF_LOG combines the core and provider logs. To enable logging granularly, use TF_LOG_CORE and _TF_LOG_PROVIDER 
 - To save logs to a file, use TF_LOG_PATH
@@ -643,6 +652,7 @@ Inside aws_instance block, it is common to have:
     tags = {
         Name = "HelloWorld"
     }
+
 This "tags" is an argument that takes map as value. Whereas, the egress block inside aws_security_group is a nested block allowed for this resource type. 
 
     egress {
@@ -658,23 +668,23 @@ My confusion must have come from the fact that both of them contain a map.
 Actually, what I refer to as the nested block has a name. It is called inline block. 
 
 ## Terraform Cloud 
-HCP Terraform is a SaaS offering from HashiCorp that provides a complete infrastructure lifecycle management. It is a backend that can store the state file securely, provides state locking and run time. It can also store other sensitive values such as credentials securely.  
+HCP Terraform is a SaaS offering from HashiCorp that provides a complete infrastructure lifecycle management. It is a backend that can store the state file securely, provides state locking and run time. It can also store secrets and variable assignment value securely.  
 
 You can try it out as it is free for up to 5 users. You can follow [this](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started) but the overview would be:
 1. Sign up
 1. Create an org
 1. Create a workspace (choose CLI)
 1. Add your AWS credentials in the workspace
-1. Add any variable in the workspace
-1. Modify your existing code and switch to HCP using the backend or cloud block.
+1. Add variable (if any) in the workspace
+1. Modify your existing code and switch to HCP using cloud block.
 1. Run init again to migrate the state.
 1. Hereafter, plan and apply will run on HCP and the output will be streamed to your local machine.
 
-If you choose VCS workspace, you will combine it with a source control repository from the likes of GitHub and it can function like a CI/CD workflow. A merge on the repository will trigger a terraform apply on the workspace.
+If you choose VCS workspace, you will combine it with a repository from the likes of GitHub and it can function like a CI/CD workflow. A merge on the repository will trigger a terraform apply on the workspace.
 
 ## More
 ### Provisioners
-Provisioners let you perform operations after terraform apply. Terraform providers the following provisioners:
+Provisioners let you perform operations after terraform apply. Terraform provides the following provisioners:
 
 - file: Copies files from the host where Terraform is running to the new resource.
 - local-exec: Runs command on the local machine after Terraform creates the resource.
@@ -682,12 +692,14 @@ Provisioners let you perform operations after terraform apply. Terraform provide
 - Cloud-init(user_data): Pass data or run commands on first boot in the compute instance created by Terraform 
 
 Provisioner should be added inside the resource block.
-Terraform cannot manage the outcome of the tasks done by provisioners. Therefore, it is recommended to avoid it as much as possible. When possible, it should be built into the image itself.
+Terraform cannot manage the outcome of the tasks done by provisioners. Therefore, it is recommended to avoid it as much as possible. When possible, the operations done by provisioners should be built into the image itself.
 
 More on provisioners [here](https://developer.hashicorp.com/terraform/language/provisioners#perform-post-apply-operations).
 
 ### null_resource and terraform_data
-You need to perform post apply operation. You can use provisioner because the task has no relation to the resources and provisioner cannot be called outside of a resource block. The solution to this is to use a null_resource and place the provisioner inside it.
+- Let us say we need to perform post apply operation. 
+- We cannot use provisioner because the task has no relation to the resources and provisioner cannot be called outside of a resource block. 
+- The solution to this is to use a null_resource and place the provisioner inside it.
 
 A null resource is a fake resource in the sense that it is like a resource but it doesn't create any object anywhere. A resource belongs to a provider and guess which provider provides a null resource? [Null provider](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource). Here is a Spacelift [article](https://spacelift.io/blog/terraform-null-resource) on null_resource.
 
@@ -696,6 +708,6 @@ Terraform 1.4 adds [terraform_data](https://registry.terraform.io/providers/hash
 ## Github repository
 These ([repo](https://github.com/rualthan/Andrew-Brown-Terraform-Associate-Labs)) are the codes from the follow alongs of Andrew Brown's HashiCorp Terraform Associate (003) course.
 
-The full course is available on Youtube as well on ExamPro for free.
+The full course is available on Youtube and ExamPro for free.
 
-Andrew's shared the codes on this [repository](https://github.com/ExamProCo/Terraform-Associate-Labs). You can clone it but I wanted to write from scratch as I followed along.
+Andrew shares the codes on this [repository](https://github.com/ExamProCo/Terraform-Associate-Labs). You can clone it but I wanted to write from scratch as I followed along.
