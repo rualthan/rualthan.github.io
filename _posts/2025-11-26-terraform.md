@@ -595,6 +595,8 @@ At this point, we can run init, plan and apply. How what about the output in the
 
 If we apply it now, the instance will be created and we will have the public IP as an output.
 
+The code is available [here](https://github.com/rualthan/terraform_lab/blob/main/example/main.tf).
+
 To publish a module to the registry, follow [this](https://developer.hashicorp.com/terraform/registry/modules/publish). 
 
 There are requirements to public a module. One of them is the naming format. That is why we name our child module directory as terraform-aws-ec2-example following the convention: `terraform-<PROVIDER>-<NAME>`.
