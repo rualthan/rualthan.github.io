@@ -15,6 +15,7 @@ About this course:
 - The exercises include a tiered architecture where a proxy is placed in front of apps and database.
 - Without a background in fullstack development, the exercises can fell daunting but there's nothing you can't solve with a thorough reading of the instruction and a some Googling, may be LLMs.
 - The course concludes with methods to optimize image for performance and security.
+- On completion of the course, you get a certificate as well as [ECTS](https://education.ec.europa.eu/education-levels/higher-education/inclusive-and-connected-higher-education/european-credit-transfer-and-accumulation-system) credits
 
 Is it for beginners?
 It could be on the challenging side for the absolute beginner. As a long time admin and support Engineer with experience in Linux, Virtualization and having dabbled in Docker before, I found the course very enjoyable. 
