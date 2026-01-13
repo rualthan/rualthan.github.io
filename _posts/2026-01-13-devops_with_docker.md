@@ -8,7 +8,7 @@ title: DevOps with Docker
 About this course:
 - There are 4 chapters and 16 exercises.
 - The exercises are centered around containerizing applications which I feel is the USP of this course. 
-- It starts with a brief introduction of server virtualization and how VMs are not efficient since it requires a full OS.
+- It starts with a brief introduction of DevOps, server virtualization and how VMs are not efficient since it requires a full OS.
 - It is followed by an introduction to containers and Docker.
 - After running through basic commands, it moves to building an image.
 - Chapter 3 introduces Docker Compose to encapsulate complex docker run commands and to run multiple containers.
