@@ -9,7 +9,7 @@ I am not new to Nigel. I had taken his Docker course a long time ago in 2016 on 
 
 I like DDD's coverage of Docker's history and development, and the various standards bodies that oversaw it — such as the OCI (Open Container Initiative).
 
-I like his style. He uses simple language and throws in witty comments here and there, which makes it a fun read. At a little over 200 pages, it's a light and easy read. I recommend it. If I were to do it again, I would read DDD first and then take the Helsinki course.
+I like his style. He uses simple language and throws in witty comments here and there, which makes it a fun read. At a little over 200 pages, it's a light and easy read. I recommend it. If I were to do it again, I would read DDD first and then take the Helsinki Uni course.
 
 Some things that were new to me, which I learned from DDD:
 * `docker init` to scaffold a Dockerfile (and related files) for a project
